@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khana Khazana United University Cafetaria ki SHAAAAAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6EEDC;
+    --paper:#FBF6EA;
+    --maroon:#5B2A2E;
+    --maroon-dark:#3A1A1D;
+    --turmeric:#D6A03F;
+    --turmeric-soft:#e9c583;
+    --charcoal:#2A211C;
+    --muted:#8a7a63;
+    --veg:#3F7D45;
+    --nonveg:#A6393B;
+    --line:#d9c7a1;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 85% 20%, rgba(214,160,63,0.16), transparent 45%),
+      radial-gradient(circle at 10% 80%, rgba(214,160,63,0.10), transparent 40%),
+      var(--maroon-dark);
+    color:var(--cream);
+    padding:64px 24px 84px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:920px;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+  }
+  .hero-eyebrow{
+    font-size:.92rem;
+    letter-spacing:.02em;
+    color:var(--turmeric-soft);
+    margin-bottom:6px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    font-weight:600;
+    line-height:.98;
+    letter-spacing:-0.01em;
+  }
+  .hero-tagline{
+    margin-top:14px;
+    max-width:480px;
+    font-size:1.05rem;
+    line-height:1.6;
+    color:#e9ddc8;
+  }
+  .hero-meta{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px 40px;
+    border-top:1px solid rgba(233,221,200,0.2);
+    padding-top:24px;
+  }
+  .hero-meta-item{max-width:240px;}
+  .hero-meta-label{
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    color:var(--turmeric-soft);
+    margin-bottom:5px;
+  }
+  .hero-meta-value{font-size:.98rem; line-height:1.5; color:var(--cream);}
+  .hero-meta-value a{text-decoration:underline; text-decoration-color:rgba(233,221,200,.4); text-underline-offset:3px;}
+  .scallop{
+    position:absolute; left:0; right:0; bottom:-1px; height:26px;
+    background:
+      radial-gradient(circle at 13px 0, transparent 13px, var(--cream) 13.5px) repeat-x;
+    background-size:26px 26px;
+  }
+
+  /* ---------- STICKY CONTROL BAR ---------- */
+  .controlbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    padding:14px 20px;
+  }
+  .controlbar-inner{
+    max-width:1080px; margin:0 auto;
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .search-wrap{
+    position:relative; flex:1 1 220px; min-width:180px;
+  }
+  .search-wrap input{
+    width:100%;
+    padding:10px 14px 10px 34px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--paper);
+    font-family:'Work Sans',sans-serif;
+    font-size:.92rem;
+    color:var(--charcoal);
+    outline:none;
+  }
+  .search-wrap input:focus{border-color:var(--maroon);}
+  .search-wrap svg{
+    position:absolute; left:12px; top:50%; transform:translateY(-50%);
+    width:15px;height:15px; color:var(--muted);
+  }
+  .veg-toggle{
+    display:flex; align-items:center; gap:8px;
+    font-size:.85rem; color:var(--charcoal);
+    cursor:pointer; user-select:none;
+    flex:none;
+  }
+  .switch{
+    width:36px; height:20px; border-radius:999px;
+    background:#ddd0ac; position:relative; flex:none;
+    transition:background .18s ease;
+  }
+  .switch::after{
+    content:''; position:absolute; top:2px; left:2px;
+    width:16px; height:16px; border-radius:50%;
+    background:var(--paper); transition:left .18s ease;
+    box-shadow:0 1px 2px rgba(0,0,0,.25);
+  }
+  .veg-toggle input{display:none;}
+  .veg-toggle input:checked + .switch{background:var(--veg);}
+  .veg-toggle input:checked + .switch::after{left:18px;}
+  .apoorva-toggle input:checked + .switch{background:var(--turmeric);}
+  .price .was{
+    text-decoration:line-through;
+    color:var(--muted);
+    font-weight:500;
+    margin-right:6px;
+    font-size:.82em;
+  }
+  .price .free{color:var(--veg); font-weight:700;}
+  .catnav{
+    display:flex; gap:8px; overflow-x:auto;
+    padding:12px 20px 2px;
+    max-width:1080px; margin:0 auto;
+    scrollbar-width:none;
+  }
+  .catnav::-webkit-scrollbar{display:none;}
+  .catnav button{
+    flex:none;
+    font-family:'Work Sans',sans-serif;
+    font-size:.82rem;
+    padding:7px 14px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--charcoal);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .15s ease;
+  }
+  .catnav button.active{
+    background:var(--maroon);
+    border-color:var(--maroon);
+    color:var(--cream);
+  }
+
+  /* ---------- MENU ---------- */
+  .menu-wrap{max-width:1080px; margin:0 auto; padding:20px 20px 40px;}
+  .category{
+    padding:40px 0 8px;
+    border-top:1px solid var(--line);
+    scroll-margin-top:118px;
+  }
+  .category:first-child{border-top:none;}
+  .category-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:22px;
+  }
+  .category-head h2{
+    font-size:1.6rem; font-weight:600; color:var(--maroon); white-space:nowrap;
+  }
+  .category-head .count{
+    font-size:.78rem; color:var(--muted); letter-spacing:.02em;
+  }
+  .items-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px 40px;
+  }
+  .menu-item{
+    display:flex; align-items:flex-end; gap:.5em;
+    padding:9px 0;
+  }
+  .mark{
+    width:12px;height:12px; flex:none;
+    border:1.4px solid var(--veg);
+    display:inline-flex; align-items:center; justify-content:center;
+    margin-bottom:4px;
+  }
+  .mark i{width:5px;height:5px;border-radius:50%;background:var(--veg);display:block;}
+  .mark.nonveg{border-color:var(--nonveg);}
+  .mark.nonveg i{background:var(--nonveg);}
+  .item-name{
+    font-size:.94rem; line-height:1.35;
+    color:var(--charcoal);
+  }
+  .dots{
+    flex:1; min-width:14px;
+    border-bottom:2px dotted #cbb98f;
+    margin-bottom:5px;
+  }
+  .price{
+    font-weight:600; font-size:.9rem;
+    color:var(--maroon); white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .empty-state{
+    text-align:center; padding:60px 20px; color:var(--muted); font-size:1rem;
+    display:none;
+  }
+
+  @media (max-width:640px){
+    .items-grid{grid-template-columns:1fr;}
+    .hero{padding:48px 18px 70px;}
+    .hero-meta{gap:20px 28px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--maroon-dark);
+    color:var(--cream);
+    padding:44px 20px 30px;
+  }
+  .footer-inner{
+    max-width:1080px; margin:0 auto;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+  }
+  footer h3{font-size:1.3rem; font-weight:600; color:var(--turmeric-soft);}
+  .footer-col{font-size:.88rem; line-height:1.7; color:#ded1b8;}
+  .footer-col a{text-decoration:underline; text-decoration-color:rgba(222,209,184,.4);}
+  .footer-note{
+    max-width:1080px; margin:30px auto 0; padding-top:18px;
+    border-top:1px solid rgba(222,209,184,.15);
+    font-size:.76rem; color:#b8a98f; text-align:center;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">United University Food Court</div>
+    <h1>Khana&nbsp;Khazana</h1>
+    <p class="hero-tagline">United University ki Shaan Khana Khazana mei apka swagat hai (WE THE BEST---) cafeteria ka sabse best cafe, Temptation ka baap hai ye</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Address</div>
+        <div class="hero-meta-value">United University CAFETERIA, Jhalwa, Prayagraj</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Hours</div>
+        <div class="hero-meta-value">jab tak united university khuli hai tab tak</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Contact Info</div>
+        <div class="hero-meta-value">nhi milega mera number</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="scallop"></div>
+</section>
+
+<div class="controlbar">
+  <div class="controlbar-inner">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search" type="text" placeholder="Search the menu…">
+    </div>
+    <label class="veg-toggle">
+      <input type="checkbox" id="vegOnly">
+      <span class="switch"></span>
+      Veg only
+    </label>
+    <label class="veg-toggle apoorva-toggle">
+      <input type="checkbox" id="apoorvaOnly">
+      <span class="switch"></span>
+      Apoorva ONLY 
+    </label>
+  </div>
+  <nav class="catnav" id="catnav"></nav>
+</div>
+
+<div class="menu-wrap">
+  <div id="menu"></div>
+  <div class="empty-state" id="emptyState">YE SAB NHI MILTA "JO HAI VOHI HAI" aap khane ke khazane se ja skte hai</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h3>Khana Khazana</h3>
+      <p class="footer-col">United University Cafeteria<br>Jhalwa, Prayagraj</p>
+    </div>
+    <div class="footer-col">
+      <strong style="color:var(--cream)">Hours</strong><br>
+      9am-4pm (subah se shaam college hours mei)
+    </div>
+    <div class="footer-col">
+      <strong style="color:var(--cream)">Contact Me👇</strong><br>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">6767676767 (Click here first)</a><br>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank" rel="noopener">Get directions (Then click here)</a>
+    </div>
+  </div>
+  <div class="footer-note">we have super Strenght we have no Weakness, we take all Opportunity and we have no Threats.</div>
+</footer>
+
+<script>
+// v = 1 marks a non-veg item; omit/0 for veg
+const MENU = [
+  { cat:"Snacks", items:[
+    ["Bread Butter",80],["French Fries",140],["Paneer Tikka",150],["Chicken Tikka",180,1]
+  ]},
+  { cat:"South Indian", items:[
+    ["Paper Dosa",150],["Masala Dosa",180],["Paneer Dosa",200],["Egg Dosa",220,1]
+  ]},
+  { cat:"Chinese", items:[
+    ["Veg Noodle",170],["Chilli Paneer",250],["Chicken Noodle",240,1],["Chilli Chicken",280,1]
+  ]},
+  { cat:"Pasta", items:[
+    ["Veg Cheese Pasta",210],["Pink Sauce Pasta",210],["Chicken Pasta",250,1]
+  ]},
+  { cat:"Burger & Pizza", items:[
+    ["Cheese Pizza",180],["Veg Burger",90],["Chicken Cheese Pizza",240,1],["Chicken Burger",140,1]
+  ]},
+  { cat:"Soup", items:[
+    ["Tomato Soup",110],["Mushroom Soup",160],["Chicken Hot & Sour Soup",160,1],["Chicken Manchow Soup",160,1]
+  ]},
+  { cat:"Raita & Salad", items:[
+    ["Boondi Raita",100],["Green Salad",80],["Russian Salad",100],["Grilled Chicken Salad",260,1]
+  ]},
+  { cat:"Tandoori", items:[
+    ["Hara Bhara Shami Kabab",250],["Malai Paneer Tikka",250],["Chicken Tikka",300,1],["Tandoori Chicken (4 pcs)",310,1]
+  ]},
+  { cat:"Indian Curry", items:[
+    ["Dal Makhani",250],["Paneer Tikka Masala",300],["Butter Chicken",350,1]
+  ]},
+  { cat:"Chaap Collection", items:[
+    ["Chaap Butter Masala",300],["Kadai Chaap",300],["Shahi Chaap",300]
+  ]},
+  { cat:"Bread", items:[
+    ["Tandoori Roti",20],["Butter Naan",50],["Garlic Naan",60]
+  ]},
+  { cat:"Rice & Biryani", items:[
+    ["Steam Rice",120],["Veg Pulao",160],["Khana Khazana Special Thali(KHAO KHUD JAAN JAO)",330],["Awadhi Chicken Dum Biryani",260,1]
+  ]},
+  { cat:"Continental(Ameero wala khana)", items:[
+    ["Chicken Stroganoff",320,1],["Fish in Lemon Butter Sauce",320,1]
+  ]},
+  { cat:"Combo Meal(Bohot saari chize)", items:[
+    ["Paw Bhaji",140],["Aloo Paratha with Curd & Pickle",110],
+    ["Paneer Makhanwala + Butter Naan or Laccha Paratha + Steam Rice",250],
+    ["Chicken Chinese Platter (Noodle/Fried Rice + Chilli Chicken or Manchurian + Spring Roll + Cold Drink)",370,1]
+  ]},
+  { cat:"Beverages", items:[
+    ["Tea",30],["Cold Coffee",100],["Lassi",80],["Belgian Dark Chocolate Shake",120]
+  ]},
+  { cat:"Mocktail", items:[
+    ["Mint Mojito",100],["Kala Khatta",100],["Paan Mojito",100],["Blue Something",100]
+  ]},
+  { cat:"Dessert", items:[
+    ["Gulab Jamun (2 pc)",60],["Ice Cream with Gulab Jamun)",80],
+    ["Ice Cream",80],["Choco Lava Cake",90]
+  ]}
+];
+
+const menuEl = document.getElementById('menu');
+const catnavEl = document.getElementById('catnav');
+const searchEl = document.getElementById('search');
+const vegOnlyEl = document.getElementById('vegOnly');
+const emptyStateEl = document.getElementById('emptyState');
+
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+
+MENU.forEach(group => {
+  const id = slug(group.cat);
+
+  const btn = document.createElement('button');
+  btn.textContent = group.cat;
+  btn.dataset.target = id;
+  btn.addEventListener('click', () => {
+    document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  catnavEl.appendChild(btn);
+
+  const section = document.createElement('section');
+  section.className = 'category';
+  section.id = id;
+  section.innerHTML = `
+    <div class="category-head">
+      <h2>${group.cat}</h2>
+      <span class="count">${group.items.length} items</span>
+    </div>
+    <div class="items-grid"></div>
+  `;
+  const grid = section.querySelector('.items-grid');
+  group.items.forEach(([name, price, nonveg]) => {
+    const row = document.createElement('div');
+    row.className = 'menu-item';
+    row.dataset.name = name.toLowerCase();
+    row.dataset.veg = nonveg ? '0' : '1';
+    row.dataset.price = price;
+    row.innerHTML = `
+      <span class="mark${nonveg ? ' nonveg' : ''}"><i></i></span>
+      <span class="item-name">${name}</span>
+      <span class="dots"></span>
+      <span class="price">₹${price}</span>
+    `;
+    grid.appendChild(row);
+  });
+  menuEl.appendChild(section);
+});
+
+function applyFilters(){
+  const q = searchEl.value.trim().toLowerCase();
+  const vegOnly = vegOnlyEl.checked;
+  let anyVisible = false;
+
+  document.querySelectorAll('.category').forEach(section => {
+    let sectionHasVisible = false;
+    section.querySelectorAll('.menu-item').forEach(item => {
+      const matchesText = !q || item.dataset.name.includes(q);
+      const matchesVeg = !vegOnly || item.dataset.veg === '1';
+      const show = matchesText && matchesVeg;
+      item.style.display = show ? '' : 'none';
+      if (show) sectionHasVisible = true;
+    });
+    section.style.display = sectionHasVisible ? '' : 'none';
+    if (sectionHasVisible) anyVisible = true;
+  });
+  emptyStateEl.style.display = anyVisible ? 'none' : 'block';
+}
+searchEl.addEventListener('input', applyFilters);
+vegOnlyEl.addEventListener('change', applyFilters);
+
+const apoorvaOnlyEl = document.getElementById('apoorvaOnly');
+function applyApoorvaMode(){
+  const on = apoorvaOnlyEl.checked;
+  document.querySelectorAll('.menu-item').forEach(item => {
+    const priceEl = item.querySelector('.price');
+    const price = item.dataset.price;
+    priceEl.innerHTML = on
+      ? `<span class="free">Zero/Free</span>`
+      : `₹${price}`;
+  });
+}
+apoorvaOnlyEl.addEventListener('change', applyApoorvaMode);
+
+// scroll-spy for category nav
+const sections = Array.from(document.querySelectorAll('.category'));
+const navButtons = Array.from(catnavEl.querySelectorAll('button'));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navButtons.forEach(b => b.classList.toggle('active', b.dataset.target === entry.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
